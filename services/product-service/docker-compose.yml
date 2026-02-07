@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+
+  app:
+    container_name: wholparts-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/wholparts
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      - postgres
+    networks:
+      - wholparts-net
+
+  postgres:
+    image: postgres:16
+    container_name: wholparts-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: wholparts
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - wholparts-net
+
+networks:
+  wholparts-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
