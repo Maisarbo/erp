@@ -1,0 +1,42 @@
+# Diretórios de compilação Maven (para todos os serviços)
+**/target/
+
+# Arquivos JAR, WAR e outros artefatos
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# Logs
+*.log
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# Configurações do IntelliJ IDEA
+.idea/
+*.iml
+
+# Configurações do Eclipse (caso use)
+.project
+.classpath
+.settings/
+
+# Arquivos do Docker que geralmente são locais
+docker-compose.override.yml
+
+# Arquivos de build do Maven Wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# Arquivos temporários e de cache
+*.tmp
+*.bak
+*.swp
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
